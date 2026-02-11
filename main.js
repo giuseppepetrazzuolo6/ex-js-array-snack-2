@@ -161,3 +161,13 @@ booksByPrice.sort((a, b) =>
     a.available === b.available ? 0 : a.available ? -1 : 1
 )
 
+//Usa reduce per creare un oggetto (tagCounts) che conta quante volte ogni tag viene usato tra i libri.
+const tagCounts = books.reduce((acc, book) => {
+    book.tags.forEach(tag => {
+        acc[tag] = (acc[tag] || 0) + 1
+    })
+    return acc
+}, {})
+
+console.log(tagCounts)
+
