@@ -142,3 +142,22 @@ async function getBooks(ids) {
     const books = await getBooks(ids)
     console.log(books)
 })()
+
+/*Snack 6 (Bonus) - Ordina i libri
+Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
+Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
+Ordina l’array booksByPrice in base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.*/
+
+//almeno un disponibile
+const areThereAvailableBooks = books.some(b => b.available)
+console.log(areThereAvailableBooks)
+
+//prezzo crescente
+const booksByPrice = [...books].sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+console.log(booksByPrice)
+
+//disponibilità
+booksByPrice.sort((a, b) =>
+    a.available === b.available ? 0 : a.available ? -1 : 1
+)
+
